@@ -12,4 +12,6 @@ public interface EmployeeService {
     String updateEmployee(EmployeeDTO employeeDTO);
 
     List<EmployeeDTO> getAllEmployees();
+
+    EmployeeDTO searchEmployee(int empId);
 }

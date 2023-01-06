@@ -49,4 +49,14 @@ public class EmployeeServiceIMPL implements EmployeeService {
         List<Employee> employeeList = employeeRepo.findAll();
         return modelMapper.map(employeeList, new TypeToken<List<EmployeeDTO>>(){}.getType());
     }
+
+    @Override
+    public EmployeeDTO searchEmployee(int empId) {
+        if (employeeRepo.existsById(empId)){
+            Employee employee = employeeRepo.findById(empId).orElse(null);
+            return modelMapper.map(employee,EmployeeDTO.class);
+        }else {
+            return null;
+        }
+    }
 }
