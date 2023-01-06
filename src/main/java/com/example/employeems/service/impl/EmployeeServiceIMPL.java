@@ -6,10 +6,12 @@ import com.example.employeems.repo.EmployeeRepo;
 import com.example.employeems.service.EmployeeService;
 import com.example.employeems.util.VarList;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -40,5 +42,11 @@ public class EmployeeServiceIMPL implements EmployeeService {
         } else {
             return VarList.RSP_NO_DATA_FOUND;
         }
+    }
+
+    @Override
+    public List<EmployeeDTO> getAllEmployees() {
+        List<Employee> employeeList = employeeRepo.findAll();
+        return modelMapper.map(employeeList, new TypeToken<List<EmployeeDTO>>(){}.getType());
     }
 }
