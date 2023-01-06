@@ -14,4 +14,6 @@ public interface EmployeeService {
     List<EmployeeDTO> getAllEmployees();
 
     EmployeeDTO searchEmployee(int empId);
+
+    String deleteEmployee(int empId);
 }

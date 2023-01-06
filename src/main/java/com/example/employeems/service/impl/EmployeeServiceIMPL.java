@@ -59,4 +59,14 @@ public class EmployeeServiceIMPL implements EmployeeService {
             return null;
         }
     }
+
+    @Override
+    public String deleteEmployee(int empId) {
+        if (employeeRepo.existsById(empId)){
+            employeeRepo.deleteById(empId);
+            return VarList.RSP_SUCCESS;
+        } else {
+            return VarList.RSP_NO_DATA_FOUND;
+        }
+    }
 }
